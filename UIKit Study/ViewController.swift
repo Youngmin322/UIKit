@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     }()
     
     let rectangleView2: UIView = {
-        let view = UIView() // rectangleView1에 있는 view와 충돌이 나지 않는 이유는 전역변수이기 때문에 해당 클로저 안에서만 사용되기 때문, 각각의 view가 이름은 같아도 메모리 주소가 다름!
+        let view = UIView() // rectangleView1에 있는 view와 충돌이 나지 않는 이유는 지역 변수이기 때문에 해당 클로저 안에서만 사용되기 때문, 각각의 view가 이름은 같아도 메모리 주소가 다름!
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .red
         return view
