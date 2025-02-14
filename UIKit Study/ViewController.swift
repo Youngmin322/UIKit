@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  UIKit Study
-//
-//  Created by 조영민 on 2/9/25.
-//
-
 import UIKit
 
 #Preview {
@@ -13,27 +6,36 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    lazy var myNameTextLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "피피아노"
-        label.textColor = .white
-        label.textAlignment = .center
-        label.backgroundColor = .black
-        return label
+    let rectangleView1: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .blue
+        return view
     }()
-
+    
+    let rectangleView2: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .red
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .orange
         
-        view.addSubview(myNameTextLabel)
-        myNameTextLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        myNameTextLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        myNameTextLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        myNameTextLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        view.addSubview(rectangleView1)
+        view.addSubview(rectangleView2)
+        
+        NSLayoutConstraint.activate([
+            rectangleView1.widthAnchor.constraint(equalToConstant: 200),
+            rectangleView1.heightAnchor.constraint(equalToConstant: 100),
+            rectangleView1.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            rectangleView1.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -60),
+            
+            rectangleView2.widthAnchor.constraint(equalToConstant: 300),
+            rectangleView2.heightAnchor.constraint(equalToConstant: 200),
+            rectangleView2.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            rectangleView2.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 100)
+        ])
     }
-
-
 }
-
