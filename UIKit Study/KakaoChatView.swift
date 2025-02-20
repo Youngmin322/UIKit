@@ -57,10 +57,8 @@ class KakaoChatViewController: UIViewController, UITableViewDelegate, UITableVie
     }()
     
     let chatList: [Chat] = [
-        Chat(profileImage: "person.crop.circle.fill", name: "홍길동", lastMessage: "오늘 뭐해?", time: "어제")
+        Chat(profileImage: "person.crop.circle.fill", name: "수진", lastMessage: "오늘 뭐해?", time: "어제")
     ]
-    
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,16 +104,21 @@ class KakaoChatViewController: UIViewController, UITableViewDelegate, UITableVie
         ])
     }
     
+    // 현재 뷰 컨트롤러가 테이블 뷰의 동작을 관리하도록 함
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ChatCell.self, forCellReuseIdentifier: "ChatCell")
+        
+        tableView.rowHeight = 60
     }
     
+    // 테이블 뷰의 행 개수를 반환하는 메서드로 현재 chatlist 배열의 개수만큼 행을 생성함
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chatList.count
     }
     
+    // 테이블 뷰에서 각 행에 들어갈 셀을 생성하고 설정하는 메서드
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatCell
         let chat = chatList[indexPath.row]
@@ -141,24 +144,55 @@ class ChatCell: UITableViewCell {
         return label
     }()
     
-    let MessageLabel: UILabel = {
+    let messageLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.font = .systemFont(ofSize: 16, weight: .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let timeLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.font = .systemFont(ofSize: 16, weight: .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        addSubview(profileImageView)
+        addSubview(nameLabel)
+        addSubview(messageLabel)
+        addSubview(timeLabel)
+        
+        NSLayoutConstraint.activate([
+            profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+            profileImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            profileImageView.widthAnchor.constraint(equalToConstant: 50),
+            profileImageView.heightAnchor.constraint(equalToConstant: 50),
+            
+            nameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 15),
+            nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 7),
+            
+            messageLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+            messageLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
+            
+            timeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+            timeLabel.topAnchor.constraint(equalTo: nameLabel.topAnchor)
+        ])
+    }
+    
+    // UITableViewCell은 인터페이스 빌더에서 사용할 수도 있기 때문에 기본적으로 init(coder:)가 필요하지만 단순 UI를 구현하는 것이기 때문에 init이 호출될 일이 없어서 강제로 fatalError를 발생시켜서 사용을 막음
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // ChatCell에 데이터를 설정하는 메서드, 채팅 리스트에 데이터를 표시하는 역할
     func configure(with chat: Chat) {
         profileImageView.image = UIImage(systemName: chat.profileImage)
         nameLabel.text = chat.name
-        MessageLabel.text = chat.lastMessage
+        messageLabel.text = chat.lastMessage
         timeLabel.text = chat.time
     }
 }
