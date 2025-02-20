@@ -49,6 +49,46 @@ class KakaoChatViewController: UIViewController, UITableViewDelegate, UITableVie
         return button
     }()
     
+    let friendTap: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "person.fill"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.contentMode = .scaleAspectFit
+        return button
+    }()
+    
+    let chattingTap: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "message.fill"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.contentMode = .scaleAspectFit
+        return button
+    }()
+    
+    let openChattingTap: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "plus.message.fill"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.contentMode = .scaleAspectFit
+        return button
+    }()
+    
+    let shopTap: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "bag.fill"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.contentMode = .scaleAspectFit
+        return button
+    }()
+    
+    let settingTap: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.contentMode = .scaleAspectFit
+        return button
+    }()
+    
     
     let tableView: UITableView = {
         let tableView = UITableView()
