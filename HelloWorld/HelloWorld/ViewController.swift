@@ -7,62 +7,77 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, SecondViewControllerDelegate {
+    
+    // lazy var: 초기화를 늦게 하기 위해 사용하는 키워드
+    lazy var myLabel: UILabel = {
+        print("myLabel 생성")
+        let label = UILabel()
+        label.text = "입력 결과를 출력합니다."
+        label.textAlignment = .center
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 24)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print("1 ViewController.viewDidLoad()")
-        
+        print("01 ViewController.viewDidLoad()")
         setupUI()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("2 ViewController.viewWillAppear()")
-    }
-    
-    override func viewIsAppearing(_ animated: Bool) {
-        super.viewIsAppearing(animated)
-        print("3 ViewController.viewIsAppearing()")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("4 ViewController.viewDidAppear()")
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        print("5 ViewController.viewWillDisappear()")
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        print("6 ViewController.viewDidDisappear()")
-    }
-    
     func setupUI() {
-        print("7 ViewController.setupUI()")
         let label = UILabel()
         label.text = "Hello, World!"
+        // (content layout) 라벨의 텍스트를 가운데 정렬
         label.textAlignment = .center
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 24)
-        // frame layout
-        label.frame = CGRect(x: 20, y: 100, width: view.frame.width - 40, height: 40)
+        // (frame layout) 붙여질 뷰의 위치와 크기를 설정
+        label.translatesAutoresizingMaskIntoConstraints = false
+        // self.view(메인 뷰)에 라벨을 서브 뷰로 추가
         self.view.addSubview(label)
+        
+        NSLayoutConstraint.activate([
+            label.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100),
+            label.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            label.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            label.heightAnchor.constraint(equalToConstant: 40)
+        ])
         
         // 버튼 추가
         
         let button = UIButton()
         button.setTitle("Go Second", for: .normal)
         button.setTitleColor(.blue, for: .normal)
-        button.frame = CGRect(x: 20, y: 200, width: view.frame.width - 40,height: 40)
         button.addTarget(self, action: #selector(goSecond), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
         
         self.view.addSubview(button)
+        
+        NSLayoutConstraint.activate([
+            button.topAnchor.constraint(equalTo: label.topAnchor, constant: 100),
+            button.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            button.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            button.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        
+        self.view.addSubview(myLabel)
+        
+        NSLayoutConstraint.activate([
+            myLabel.topAnchor.constraint(equalTo: button.topAnchor, constant: 100),
+            myLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            myLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            myLabel.heightAnchor.constraint(equalToConstant: 40)
+        ])
     }
+    
+    func didDismissSecondViewController(message: String) {
+        myLabel.text = message
+    }
+    
     
     @objc func goSecond() {
         let secondVC = SecondViewController()
