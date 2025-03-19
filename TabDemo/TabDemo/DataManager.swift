@@ -9,7 +9,7 @@ import Foundation
 
 class DataManager {
     static let shared = DataManager() // 싱글톤 인스턴스
-    private init() { } // 외부에서 초기화 방지
+    private init() {} // 외부에서 초기화 방지
     
     // 데이터 저장을 위한 속성
     var data: String = ""
