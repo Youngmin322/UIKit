@@ -38,6 +38,7 @@ class CoreDataManager {
         }
     }
     
+    // MARK: CRUD 설계
     
     // 모든 할 일 가져오기
     func fetchTodos() -> [Todo] {
