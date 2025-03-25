@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     }
     
     func startAnimation() {
-        UIView.animate(withDuration: 1.0) {
+        UIView.animate(withDuration: 1.0) { 
             self.animationView.frame.origin.x += 100
             self.animationView.frame.origin.y += 50
         }
