@@ -7,19 +7,32 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		543AF57A2D923B8C00354B0E /* JRNL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JRNL.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5478A0972D92656F005C6BD7 /* JRNL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JRNL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		5478A0A92D926570005C6BD7 /* Exceptions for "JRNL" folder in "JRNL" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 5478A0962D92656F005C6BD7 /* JRNL */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		543AF57C2D923B8C00354B0E /* JRNL */ = {
+		5478A0992D92656F005C6BD7 /* JRNL */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				5478A0A92D926570005C6BD7 /* Exceptions for "JRNL" folder in "JRNL" target */,
+			);
 			path = JRNL;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		543AF5772D923B8C00354B0E /* Frameworks */ = {
+		5478A0942D92656F005C6BD7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -29,18 +42,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		543AF5712D923B8C00354B0E = {
+		5478A08E2D92656F005C6BD7 = {
 			isa = PBXGroup;
 			children = (
-				543AF57C2D923B8C00354B0E /* JRNL */,
-				543AF57B2D923B8C00354B0E /* Products */,
+				5478A0992D92656F005C6BD7 /* JRNL */,
+				5478A0982D92656F005C6BD7 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		543AF57B2D923B8C00354B0E /* Products */ = {
+		5478A0982D92656F005C6BD7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				543AF57A2D923B8C00354B0E /* JRNL.app */,
+				5478A0972D92656F005C6BD7 /* JRNL.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,64 +61,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		543AF5792D923B8C00354B0E /* JRNL */ = {
+		5478A0962D92656F005C6BD7 /* JRNL */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 543AF5902D923B8D00354B0E /* Build configuration list for PBXNativeTarget "JRNL" */;
+			buildConfigurationList = 5478A0AA2D926570005C6BD7 /* Build configuration list for PBXNativeTarget "JRNL" */;
 			buildPhases = (
-				543AF5762D923B8C00354B0E /* Sources */,
-				543AF5772D923B8C00354B0E /* Frameworks */,
-				543AF5782D923B8C00354B0E /* Resources */,
+				5478A0932D92656F005C6BD7 /* Sources */,
+				5478A0942D92656F005C6BD7 /* Frameworks */,
+				5478A0952D92656F005C6BD7 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				543AF57C2D923B8C00354B0E /* JRNL */,
+				5478A0992D92656F005C6BD7 /* JRNL */,
 			);
 			name = JRNL;
 			packageProductDependencies = (
 			);
 			productName = JRNL;
-			productReference = 543AF57A2D923B8C00354B0E /* JRNL.app */;
+			productReference = 5478A0972D92656F005C6BD7 /* JRNL.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		543AF5722D923B8C00354B0E /* Project object */ = {
+		5478A08F2D92656F005C6BD7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					543AF5792D923B8C00354B0E = {
+					5478A0962D92656F005C6BD7 = {
 						CreatedOnToolsVersion = 16.2;
 					};
 				};
 			};
-			buildConfigurationList = 543AF5752D923B8C00354B0E /* Build configuration list for PBXProject "JRNL" */;
+			buildConfigurationList = 5478A0922D92656F005C6BD7 /* Build configuration list for PBXProject "JRNL" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 543AF5712D923B8C00354B0E;
+			mainGroup = 5478A08E2D92656F005C6BD7;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 543AF57B2D923B8C00354B0E /* Products */;
+			productRefGroup = 5478A0982D92656F005C6BD7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				543AF5792D923B8C00354B0E /* JRNL */,
+				5478A0962D92656F005C6BD7 /* JRNL */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		543AF5782D923B8C00354B0E /* Resources */ = {
+		5478A0952D92656F005C6BD7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,7 +128,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		543AF5762D923B8C00354B0E /* Sources */ = {
+		5478A0932D92656F005C6BD7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -125,7 +138,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		543AF5912D923B8D00354B0E /* Debug */ = {
+		5478A0AB2D926570005C6BD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -153,7 +166,7 @@
 			};
 			name = Debug;
 		};
-		543AF5922D923B8D00354B0E /* Release */ = {
+		5478A0AC2D926570005C6BD7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -181,7 +194,7 @@
 			};
 			name = Release;
 		};
-		543AF5932D923B8D00354B0E /* Debug */ = {
+		5478A0AD2D926570005C6BD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -244,7 +257,7 @@
 			};
 			name = Debug;
 		};
-		543AF5942D923B8D00354B0E /* Release */ = {
+		5478A0AE2D926570005C6BD7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -303,25 +316,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		543AF5752D923B8C00354B0E /* Build configuration list for PBXProject "JRNL" */ = {
+		5478A0922D92656F005C6BD7 /* Build configuration list for PBXProject "JRNL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				543AF5932D923B8D00354B0E /* Debug */,
-				543AF5942D923B8D00354B0E /* Release */,
+				5478A0AD2D926570005C6BD7 /* Debug */,
+				5478A0AE2D926570005C6BD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		543AF5902D923B8D00354B0E /* Build configuration list for PBXNativeTarget "JRNL" */ = {
+		5478A0AA2D926570005C6BD7 /* Build configuration list for PBXNativeTarget "JRNL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				543AF5912D923B8D00354B0E /* Debug */,
-				543AF5922D923B8D00354B0E /* Release */,
+				5478A0AB2D926570005C6BD7 /* Debug */,
+				5478A0AC2D926570005C6BD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 543AF5722D923B8C00354B0E /* Project object */;
+	rootObject = 5478A08F2D92656F005C6BD7 /* Project object */;
 }
