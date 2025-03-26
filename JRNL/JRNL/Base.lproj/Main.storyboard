@@ -380,6 +380,7 @@
                     <connections>
                         <outlet property="bodyTextView" destination="7JJ-sv-p8q" id="QmS-rx-mdY"/>
                         <outlet property="photoImageView" destination="lS5-AU-9Y4" id="TUs-OI-6Qq"/>
+                        <outlet property="saveButton" destination="um1-T9-Z3x" id="bhK-4B-OgW"/>
                         <outlet property="titleTextField" destination="NH9-fe-ZLj" id="2oG-Wh-2OH"/>
                     </connections>
                 </viewController>
