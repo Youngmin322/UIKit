@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  JRNL
 //
-//  Created by 조영민 on 3/25/25.
+//  Created by Jungman Bae on 3/25/25.
 //
 
 import UIKit
