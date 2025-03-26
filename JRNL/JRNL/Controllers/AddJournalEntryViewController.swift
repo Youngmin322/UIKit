@@ -20,11 +20,29 @@ class AddJournalEntryViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("prepare")
-        let title = titleTextField.text ?? ""
-        let body = bodyTextView.text ?? ""
-        let photo = photoImageView.image
-        let rating = 3
-        newJournalEntry = JournalEntry(rating: rating, title: title, body: body, photo: photo)
+        print("prepare\(String(describing: segue.identifier))")
+        if let segueIndetifier = segue.identifier {
+            if segueIndetifier == "save" {
+                let title = titleTextField.text ?? ""
+                let body = bodyTextView.text ?? ""
+                let photo = photoImageView.image
+                let rating = 3
+                newJournalEntry = JournalEntry(rating: rating, title: title, body: body, photo: photo)
+            }
+        }
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension AddJournalEntryViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("1 textFieldDidBeginEditing")
+    }
+}
+
+// MARK: - UITextViewDelegate
+extension AddJournalEntryViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        print("2 textViewDidBeginEditing")
     }
 }

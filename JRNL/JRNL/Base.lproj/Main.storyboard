@@ -325,6 +325,9 @@
                                         <rect key="frame" x="8" y="91" width="337" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="yqg-pE-XY2" id="1bx-kb-GuN"/>
+                                        </connections>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7JJ-sv-p8q">
                                         <rect key="frame" x="8" y="133" width="337" height="128"/>
@@ -336,6 +339,9 @@
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="yqg-pE-XY2" id="okO-8Z-SG4"/>
+                                        </connections>
                                     </textView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="face.smiling" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lS5-AU-9Y4">
                                         <rect key="frame" x="76.666666666666686" y="269.66666666666669" width="200" height="198.66666666666669"/>
@@ -360,8 +366,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Entry" id="MVb-og-snt">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="1Za-vm-zoj"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="um1-T9-Z3x"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="1Za-vm-zoj">
+                            <connections>
+                                <segue destination="bbS-KQ-bAx" kind="unwind" unwindAction="unwindNewEntryCancelWithSegue:" id="Xgh-qt-RN0"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="um1-T9-Z3x">
+                            <connections>
+                                <segue destination="bbS-KQ-bAx" kind="unwind" unwindAction="unwindNewEntrySaveWithSegue:" id="3ql-9y-hah"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bodyTextView" destination="7JJ-sv-p8q" id="QmS-rx-mdY"/>
@@ -370,6 +384,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b5S-gb-N4i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="bbS-KQ-bAx" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4709" y="111"/>
         </scene>
