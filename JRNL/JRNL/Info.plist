@@ -21,7 +21,5 @@
 			</array>
 		</dict>
 	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>허용 눌러줭</string>
 </dict>
 </plist>

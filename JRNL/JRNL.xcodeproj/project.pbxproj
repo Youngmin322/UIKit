@@ -148,6 +148,8 @@
 				DEVELOPMENT_TEAM = 5R33532VPH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JRNL/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "허용 눌러줭";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "허용 해줘!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -176,6 +178,8 @@
 				DEVELOPMENT_TEAM = 5R33532VPH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JRNL/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "허용 눌러줭";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "허용 해줘!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
