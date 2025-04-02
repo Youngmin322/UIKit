@@ -1,6 +1,6 @@
 //
-//  JRNLWidegetExtension.swift
-//  JRNLWidegetExtension
+//  JRNLWideget.swift
+//  JRNLWideget
 //
 //  Created by 조영민 on 4/2/25.
 //
@@ -43,7 +43,7 @@ struct SimpleEntry: TimelineEntry {
     let emoji: String
 }
 
-struct JRNLWidegetExtensionEntryView : View {
+struct JRNLWidegetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
@@ -57,16 +57,16 @@ struct JRNLWidegetExtensionEntryView : View {
     }
 }
 
-struct JRNLWidegetExtension: Widget {
-    let kind: String = "JRNLWidegetExtension"
+struct JRNLWideget: Widget {
+    let kind: String = "JRNLWideget"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             if #available(iOS 17.0, *) {
-                JRNLWidegetExtensionEntryView(entry: entry)
+                JRNLWidegetEntryView(entry: entry)
                     .containerBackground(.fill.tertiary, for: .widget)
             } else {
-                JRNLWidegetExtensionEntryView(entry: entry)
+                JRNLWidegetEntryView(entry: entry)
                     .padding()
                     .background()
             }
@@ -77,7 +77,7 @@ struct JRNLWidegetExtension: Widget {
 }
 
 #Preview(as: .systemSmall) {
-    JRNLWidegetExtension()
+    JRNLWideget()
 } timeline: {
     SimpleEntry(date: .now, emoji: "😀")
     SimpleEntry(date: .now, emoji: "🤩")
