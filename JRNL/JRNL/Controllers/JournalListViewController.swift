@@ -17,12 +17,29 @@ class JournalListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SharedData.shared.loadJournalEntriesData()
+        setupCollectionView()
+        
+        SharedData.shared.fetchJournalEntries()
         
         search.searchResultsUpdater = self
         search.obscuresBackgroundDuringPresentation = false
         search.searchBar.placeholder = "제목 검색"
         navigationItem.searchController = search
+        tabBarController?.mode = .tabSidebar
+    }
+    
+    func setupCollectionView() {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        flowLayout.minimumInteritemSpacing = 10
+        flowLayout.minimumLineSpacing = 10
+        collectionView.collectionViewLayout = flowLayout
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        print("viewWillLayoutSubviews!!!!!")
+        collectionView.collectionViewLayout.invalidateLayout()
     }
     
     @IBAction func unwindNewEntryCancel(segue: UIStoryboardSegue) {
@@ -33,6 +50,7 @@ class JournalListViewController: UIViewController {
         if let sourceViewController = segue.source as? AddJournalEntryViewController,
            let newJournalEntry = sourceViewController.newJournalEntry {
             SharedData.shared.addJournalEntry(newJournalEntry)
+            SharedData.shared.fetchJournalEntries()
             collectionView.reloadData()
         }
     }
@@ -49,7 +67,7 @@ class JournalListViewController: UIViewController {
     }
 }
 
-// MARK: - UITableViewDataSource
+// MARK: - UICollectionViewDataSource
 extension JournalListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return search.isActive ? filteredTableData.count : SharedData.shared.numberOfJournalEntries
@@ -59,23 +77,64 @@ extension JournalListViewController: UICollectionViewDataSource {
         let journalCell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "journalCell",
             for: indexPath
-        )
+        ) as! JournalListCollectionViewCell
         
-//        let journalEntry =  search.isActive ? filteredTableData[indexPath.row] : SharedData.shared.getJournalEntry(at: indexPath.row)
-//        // 날짜, 제목, 사진 표시
-//        // 날짜는 "월 일, 년" 형식으로 표시
-//        journalCell.dateLabel.text = journalEntry.dateString
-//        journalCell.titleLabel.text = journalEntry.entryTitle
-//        if let photoData = journalEntry.photoData {
-//            journalCell.photoImageView.image = UIImage(data: photoData)
-//        }
+        let journalEntry =  search.isActive ? filteredTableData[indexPath.row] : SharedData.shared.getJournalEntry(at: indexPath.row)
+        // 날짜, 제목, 사진 표시
+        // 날짜는 "월 일, 년" 형식으로 표시
+        journalCell.dateLabel.text = journalEntry.title
+        journalCell.titleLabel.text = journalEntry.entryTitle
+        if let photoData = journalEntry.photoData {
+            journalCell.photoImageView.image = UIImage(data: photoData)
+        }
         return journalCell
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - UICollectionViewDelegate
 extension JournalListViewController: UICollectionViewDelegate {
-    // TODO: 컬렉션 뷰 델리게이트 코드 추가 (contextMenu, 동적 사이즈 코드 추가 필요)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedJournalEntry = search.isActive ? filteredTableData[indexPath.row] : SharedData.shared.getJournalEntry(at: indexPath.row)
+        performSegue(withIdentifier: "showDetail", sender: self)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemsAt indexPaths: [IndexPath], point: CGPoint) -> UIContextMenuConfiguration? {
+        let config = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (elements) -> UIMenu? in
+            let delete = UIAction(title: "Delete") { (action) in
+                indexPaths.forEach { indexPath in
+                    if self.search.isActive {
+                        let selectedJournalEntry = self.filteredTableData[indexPath.item]
+                        self.filteredTableData.remove(at: indexPath.item)
+                        SharedData.shared.removeSelected(journalEntry: selectedJournalEntry)
+                    } else {
+                        let selectedJournalEntry = SharedData.shared.getJournalEntry(at: indexPath.item)
+                        SharedData.shared.removeSelected(journalEntry: selectedJournalEntry)
+                    }
+                }
+                self.collectionView.reloadData()
+            }
+            return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [delete])
+        }
+        return config
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension JournalListViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        var columns: CGFloat
+        if traitCollection.horizontalSizeClass == .compact {
+            columns = 1
+        } else {
+            columns = 2
+        }
+        let viewWidth = collectionView.frame.width
+        let inset = 10.0
+        let contentWidth = viewWidth - inset * (columns + 1)
+        let cellWidth = contentWidth / columns
+        let cellHeight = 90.0
+        return CGSize(width: cellWidth, height: cellHeight)
+    }
 }
 
 // MARK: - UISearchResultsUpdating
